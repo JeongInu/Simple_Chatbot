@@ -1,179 +1,100 @@
-# Simple Chatbot
+💬 Simple Chatbot
+KoGPT2 기반 실시간 스트리밍 챗봇 애플리케이션
 
-A full-stack chatbot application featuring a Korean language model (KoGPT2) with real-time streaming responses. The project consists of a React frontend, Spring Boot backend, and a Python FastAPI service for AI model inference.
+React 프론트엔드, Spring Boot 백엔드, FastAPI 기반 AI 서버로 구성된 풀스택 한국어 챗봇 프로젝트입니다.
 
-## 🚀 Features
+🚀 주요 기능
+🗨️ 실시간 채팅 UI: React 기반의 모던한 채팅 인터페이스
 
-- **Real-time Chat Interface**: Modern React-based chat UI with streaming responses
-- **Korean Language Model**: Powered by fine-tuned KoGPT2 for natural Korean conversations
-- **WebSocket Communication**: Real-time bidirectional communication between frontend and backend
-- **Streaming Responses**: Word-by-word response generation for better user experience
-- **Multi-Architecture**: Microservices architecture with separate frontend, backend, and AI service
+🇰🇷 한국어 언어 모델: KoGPT2로 자연스러운 대화 가능
 
-## 🏗️ Architecture
+🔌 WebSocket 실시간 통신: 빠른 반응과 양방향 메시징 지원
 
-```
+⏱️ 스트리밍 응답 처리: 단어 단위 응답으로 몰입감 있는 대화
+
+🧩 마이크로서비스 아키텍처: 프론트 / 백엔드 / AI 서버 분리 구조
+
+🏗️ 시스템 구성
+bash
+Copy
+Edit
 Simple_Chatbot/
-├── frontend/          # React application (UI)
-├── backend/           # Spring Boot application (WebSocket server)
-└── markov/            # Python FastAPI service (AI model inference)
-```
+├── frontend/   # React 프론트엔드
+├── backend/    # Spring Boot 백엔드 (WebSocket)
+└── markov/     # FastAPI 기반 AI 모델 서버
+⚙️ 기술 스택
+프론트엔드
+React 19.1.0
 
-### Components
+WebSocket API
 
-- **Frontend (React)**: User interface with real-time chat functionality
-- **Backend (Spring Boot)**: WebSocket server handling real-time communication
-- **AI Service (FastAPI)**: KoGPT2 model inference with streaming responses
+Axios
 
-## 🛠️ Tech Stack
+모던 CSS 스타일링
 
-### Frontend
-- React 19.1.0
-- WebSocket API
-- Axios for HTTP requests
-- Modern CSS styling
+백엔드
+Spring Boot 3.4.4
 
-### Backend
-- Spring Boot 3.4.4
-- Java 17
-- WebSocket support
-- Spring WebFlux
+Java 17
 
-### AI Service
-- FastAPI
-- PyTorch
-- Transformers (Hugging Face)
-- KoGPT2 model
+WebSocket / WebFlux
 
-## 📋 Prerequisites
+AI 서비스
+FastAPI
 
-- Node.js (v16 or higher)
-- Java 17
-- Python 3.11
-- Git
+PyTorch
 
-## 🚀 Installation & Setup
+Hugging Face Transformers
 
-### 1. Clone the Repository
+KoGPT2
 
-```bash
+🛠️ 개발 환경
+Node.js (v16 이상)
+
+Java 17
+
+Python 3.11
+
+Git
+
+🚀 실행 방법
+1. 리포지토리 클론
+bash
+Copy
+Edit
 git clone <your-repository-url>
 cd Simple_Chatbot
-```
-
-### 2. Frontend Setup
-
-```bash
+2. 프론트엔드 실행
+bash
+Copy
+Edit
 cd frontend
 npm install
 npm start
-```
+기본 주소: http://localhost:3000
 
-The React app will run on `http://localhost:3000`
-
-### 3. Backend Setup
-
-```bash
+3. 백엔드 실행
+bash
+Copy
+Edit
 cd backend
 ./gradlew bootRun
-```
+기본 포트: http://localhost:8080
 
-The Spring Boot server will run on `http://localhost:8080`
-
-### 4. AI Service Setup
-
-```bash
+4. AI 서비스 실행
+bash
+Copy
+Edit
 cd markov
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
-```
+기본 포트: http://localhost:8000
 
-The FastAPI service will run on `http://localhost:8000`
+💬 사용 방법
+프론트엔드, 백엔드, AI 서버를 모두 실행
 
-## 🎯 Usage
+웹 브라우저에서 http://localhost:3000 접속
 
-1. Start all three services (frontend, backend, AI service)
-2. Open your browser and navigate to `http://localhost:3000`
-3. Start chatting with the Korean language model
-4. Enjoy real-time streaming responses!
-
-## 📁 Project Structure
-
-```
-Simple_Chatbot/
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── ChatBot.js      # Main chat component
-│   │   │   └── ChatBot.css     # Chat styling
-│   │   ├── api/
-│   │   │   └── chatApi.js      # API utilities
-│   │   └── App.js              # Main app component
-│   └── package.json
-├── backend/
-│   ├── src/main/java/
-│   │   └── com/example/        # Spring Boot application
-│   ├── build.gradle
-│   └── application.properties
-├── markov/
-│   ├── app/
-│   │   ├── main.py             # FastAPI application
-│   │   ├── chatbot.py          # Chatbot logic
-│   │   └── schemas.py          # Pydantic models
-│   ├── data/                   # Training data
-│   ├── final/                  # Trained model
-│   └── requirements.txt
-└── README.md
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create `.env` files in respective directories if needed:
-
-**Frontend (.env)**
-```
-REACT_APP_API_URL=http://localhost:8080
-REACT_APP_WS_URL=ws://localhost:8080/ws/chat
-```
-
-**Backend (application.properties)**
-```properties
-server.port=8080
-spring.websocket.max-text-message-size=8192
-```
-
-**AI Service (.env)**
-```
-MODEL_PATH=./final
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- [KoGPT2](https://github.com/SKT-AI/KoGPT2) - Korean language model
-- [Hugging Face Transformers](https://huggingface.co/transformers/) - Model framework
-- [Spring Boot](https://spring.io/projects/spring-boot) - Backend framework
-- [React](https://reactjs.org/) - Frontend framework
-
-## 📞 Support
-
-If you encounter any issues or have questions, please open an issue on GitHub.
-
----
-
-**Happy Chatting! 👽✨** 
+실시간 스트리밍 챗봇과 한국어로 대화 시작!
